@@ -1,0 +1,111 @@
+/* Base AddressSearch styles — overridden per layout */
+
+.address-search {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1 1 200px;
+  position: relative;
+}
+
+.field-group--narrow {
+  flex: 0 1 90px;
+}
+
+.field-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #555;
+}
+
+.field-group input {
+  padding: 0.6rem 0.75rem;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+  background: white;
+  color: #1a1a2e;
+}
+
+.field-group input:focus {
+  border-color: #4a90d9;
+}
+
+.field-group input:disabled {
+  background: #f5f5f5;
+  color: #999;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  margin-top: 2px;
+  list-style: none;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.suggestions li {
+  padding: 0.55rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.suggestions li:hover {
+  background: #f0f6ff;
+}
+
+.address-search button[type="submit"] {
+  padding: 0.65rem 1.4rem;
+  background: #1a1a2e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  flex: 0 0 auto;
+  align-self: flex-end;
+}
+
+.address-search button[type="submit"]:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.address-search button[type="submit"]:not(:disabled):hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 480px) {
+  .address-search {
+    flex-direction: column;
+  }
+  .field-group--narrow {
+    flex: 1 1 auto;
+  }
+}

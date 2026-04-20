@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { fetchSuburbs, fetchStreets } from "../api";
+import "./AddressSearch.css";
 
 interface Props {
   onSearch: (suburb: string, street: string, number: string) => void;
