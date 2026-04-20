@@ -26,3 +26,11 @@ export interface AddressParams {
   street: string;
   number?: string;
 }
+
+export interface SavedPlace {
+  id: string;
+  address: string; // display label from API response
+  suburb: string;
+  street: string;
+  number: string;
+}
