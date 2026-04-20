@@ -1,6 +1,6 @@
-# BCC Bins API
+# BCC Bin Days
 
-A thin Go REST API that wraps Brisbane City Council's public Open Data platform to return bin collection schedules (general waste, recycling, green waste) for any residential address in Brisbane.
+A Go REST API and React frontend that wraps Brisbane City Council's public Open Data platform to show bin collection schedules (general waste, recycling, green waste) for any residential address in Brisbane.
 
 ## Background
 
@@ -110,7 +110,7 @@ Health check.
 
 ## Running
 
-### Locally
+### API (Go)
 
 ```bash
 go run .
@@ -123,6 +123,24 @@ Defaults to port `8080`. Override with:
 ```bash
 PORT=3000 ./bcc-bins
 ```
+
+### Frontend (React / Vite)
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The dev server starts on `http://localhost:5173`. API requests are proxied to `http://localhost:8080`, so the Go API must be running alongside it.
+
+To build for production:
+
+```bash
+cd frontend && npm run build
+```
+
+The compiled output lands in `frontend/dist/` and can be served as static files alongside the API binary.
 
 ### Docker
 
@@ -146,6 +164,7 @@ Tests use `httptest` mock servers and do not hit the live BCC API.
 ## Project Structure
 
 ```
+# API
 main.go            # Entry point, server setup, request logging
 types.go           # ODS and public API struct types
 ods.go             # BCC Open Data client (queryODS)
@@ -156,6 +175,18 @@ testhelpers_test.go # Shared test fixtures and mock upstream
 schedule_test.go    # Tests for schedule and date logic
 ods_test.go         # Tests for the ODS HTTP client
 handlers_test.go    # Tests for all HTTP handlers
+
+# Frontend
+frontend/
+  src/
+    api.ts                      # Typed fetch wrappers for all API endpoints
+    types.ts                    # TypeScript interfaces mirroring API responses
+    App.tsx                     # Root component — address lookup and result state
+    components/
+      AddressSearch.tsx         # Suburb/street/number inputs with autocomplete
+      BinSchedule.tsx           # Schedule display — next collection + 8-week list
+      BinIcon.tsx               # SVG bin icon (red / yellow / green)
+  vite.config.ts                # Dev proxy: /bins, /suburbs, /streets → :8080
 ```
 
 ---

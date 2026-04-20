@@ -26,9 +26,12 @@ const (
 //   - Integer fields take no quotes at all:    property_number=12345678
 //   - Prefix search uses startswith(), not LIKE: startswith(suburb_name,"KEN")
 //   - Date comparisons also use double quotes:  week_starting>="2026-04-20"
-func queryODS(dataset, where string, limit int) (*odsResponse, error) {
+func queryODS(dataset, where string, limit int, orderBy ...string) (*odsResponse, error) {
 	endpoint := fmt.Sprintf("%s/%s/records?where=%s&limit=%d",
 		openDataBase, dataset, url.QueryEscape(where), limit)
+	if len(orderBy) > 0 && orderBy[0] != "" {
+		endpoint += "&order_by=" + url.QueryEscape(orderBy[0])
+	}
 
 	client := &http.Client{Timeout: 10 * time.Second}
 	req, err := http.NewRequest("GET", endpoint, nil)

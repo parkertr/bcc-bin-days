@@ -108,7 +108,7 @@ func handleLookup(w http.ResponseWriter, r *http.Request) {
 	weeksWhere := fmt.Sprintf(`week_starting>="%s"`, today.Format("2006-01-02"))
 
 	weekZoneMap := map[string]string{}
-	weeksResp, err := queryODS(weeksDataset, weeksWhere, 20)
+	weeksResp, err := queryODS(weeksDataset, weeksWhere, 20, "week_starting")
 	if err == nil && weeksResp != nil {
 		for _, wr := range weeksResp.Results {
 			if wr.WeekStarting == "" {
@@ -120,7 +120,7 @@ func handleLookup(w http.ResponseWriter, r *http.Request) {
 			}
 			key := t.Format("2006-01-02")
 			// Both fields are named "zone"; property stores "ZONE 1", weeks stores "Zone 1".
-			// Same zone as property = yellow (recycling) week.
+			// BCC algorithm: zone match = yellow (recycling) week; mismatch = green waste week.
 			if strings.EqualFold(rec.Zone, wr.Zone) {
 				weekZoneMap[key] = "yellow"
 			} else {

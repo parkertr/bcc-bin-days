@@ -1,0 +1,318 @@
+/* ── Layout ────────────────────────────────────────────────────────────────── */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background: #1a1a2e;
+  color: white;
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.app-header p {
+  opacity: 0.75;
+  font-size: 1rem;
+}
+
+.app-main {
+  flex: 1;
+  max-width: 720px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.app-footer a {
+  color: #4a90d9;
+}
+
+/* ── Error banner ──────────────────────────────────────────────────────────── */
+
+.error-banner {
+  background: #fdecea;
+  border: 1px solid #f5c6cb;
+  color: #c0392b;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+/* ── Address search form ───────────────────────────────────────────────────── */
+
+.address-search {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1 1 200px;
+  position: relative;
+}
+
+.field-group--narrow {
+  flex: 0 1 90px;
+}
+
+.field-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #555;
+}
+
+.field-group input {
+  padding: 0.6rem 0.75rem;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+
+.field-group input:focus {
+  border-color: #4a90d9;
+}
+
+.field-group input:disabled {
+  background: #f5f5f5;
+  color: #999;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  margin-top: 2px;
+  list-style: none;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.suggestions li {
+  padding: 0.55rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.suggestions li:hover {
+  background: #f0f6ff;
+}
+
+.address-search button {
+  padding: 0.65rem 1.4rem;
+  background: #1a1a2e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  flex: 0 0 auto;
+  align-self: flex-end;
+}
+
+.address-search button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.address-search button:not(:disabled):hover {
+  opacity: 0.85;
+}
+
+/* ── Property info ─────────────────────────────────────────────────────────── */
+
+.property-info {
+  margin-bottom: 1.25rem;
+}
+
+.property-info h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.property-info p {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #555;
+}
+
+/* ── Bin schedule card ─────────────────────────────────────────────────────── */
+
+.bin-schedule {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Next collection ───────────────────────────────────────────────────────── */
+
+.next-collection {
+  background: #f0f6ff;
+  border: 1.5px solid #c8dff5;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.next-collection h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #4a90d9;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.next-collection__date {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.next-collection__bins {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* ── Bin icon ──────────────────────────────────────────────────────────────── */
+
+.bin-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  transition: opacity 0.2s;
+}
+
+.bin-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #444;
+  text-align: center;
+}
+
+/* ── Upcoming list ─────────────────────────────────────────────────────────── */
+
+.upcoming summary {
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4a90d9;
+  padding: 0.25rem 0;
+  user-select: none;
+}
+
+.upcoming__list {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.collection-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  background: #fafafa;
+  border: 1px solid #eee;
+}
+
+.collection-row--today {
+  background: #fff8e1;
+  border-color: #ffe082;
+}
+
+.collection-row__date {
+  display: flex;
+  flex-direction: column;
+}
+
+.collection-row__day-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.collection-row__days-until {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.collection-row__bins {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.collection-row__bins .bin-icon {
+  gap: 0.2rem;
+}
+
+.collection-row__bins .bin-label {
+  font-size: 0.6rem;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .app-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .address-search {
+    flex-direction: column;
+  }
+
+  .field-group--narrow {
+    flex: 1 1 auto;
+  }
+
+  .next-collection__bins {
+    gap: 1rem;
+  }
+}
